@@ -8,7 +8,7 @@
 <body>
     <h1>Verifique seus dados</h1>
     <p>Qual é a sua nacionalidade?</p>
-    <input type="text" id="nac">
+    <input type="text" id="nac" required>
     <input type="button" value="Enviar" id="send" onclick="checkNac()">
     <div class="result"></div>
 
@@ -27,10 +27,15 @@
             let enviar = window.document.querySelector('input#send')
             let result = window.document.querySelector('div.result')
 
+            if (nacionalidade == '') {
+                result.innerHTML = `Por favor, digite sua nacionalidade.`
+                return; // pra executar a função
+            }
+
             if (nacionalidade != 'Brasil') {
                 result.innerHTML = `O seu país de origem é ${nacionalidade}. Você é estrangeiro.`
             } else {
-                result.innerHTML = `Você é BR!!!`
+                result.innerHTML = `Você é BR!!`
             }
         }
 
